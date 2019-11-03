@@ -53,6 +53,10 @@
             text-decoration: none;
             cursor: pointer;
         }
+
+        img{
+            width: 100%;
+        }
     </style>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -252,8 +256,9 @@
             <span id="close">&times;</span>
             <h2>"Your Match Is...</h2>
             <h3 id="match-name"></h3>
-            <img id="match-image"></a>
-
+            <div>
+                <img id="match-image"></a>
+            </div>
         </div>
     </div>
 </body>
@@ -347,20 +352,15 @@
                         }
                     };
                 };
-        
+
                 modal.css("display", "block");
                 matchName.text(match.friendName);
                 matchImage.attr("src", match.friendPhoto);
-                close.onclick = function () {
-                    modal.css("display", "none");
-                };
 
-                // When the user clicks anywhere outside of the modal, close it
-                window.onclick = function (event) {
-                    if (event.target == modal) {
-                        modal.css("display", "none");
-                    }
-                };
             });
     };
+
+    close.on("click", function () {
+        modal.css("display", "none");
+    });
 </script>
