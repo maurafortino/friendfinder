@@ -6,6 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <style>
+        #modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+
+        /* Modal Content/Box */
+        #modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button */
+        #close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        #close:hover,
+        #close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -19,13 +67,13 @@
 <body>
 
     <nav class="navbar navbar-light">
-        <a href="/home.html"><span class="navbar-brand mb-0 h1"><i class="fas fa-home"></i> Home</span></a>
+        <a href="/home"><span class="navbar-brand mb-0 h1"><i class="fas fa-home"></i> Home</span></a>
     </nav>
 
     <div class="container">
-        <section class="about">
-            <h4>About You</h4>
-            <form>
+        <form>
+            <section class="about">
+                <h4>About You</h4>
                 <div class="form-group">
                     <label for="name">Name (Required)</label>
                     <input type="text" class="form-control" id="name">
@@ -34,171 +82,285 @@
                     <label for="image-link">Link to Photo Image (Required)</label>
                     <input type="text" class="form-control" id="image-link">
                 </div>
-                <button type="submit" class="btn">Submit</button>
-            </form>
-        </section>
+            </section>
 
-        <section id="survey">
-            <div class="row">
-                <div class="col-12">
-                    <h4>Question 1</h4>
-                    <h6>Your mind is always buzzing with unexplored ideas and plans.</h6>
-                    <select id="range-1" class="form-control">
-                        <option selected disabled>Select an Option</option>
-                        <option>1 (strongly disagree)</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5 (strong agree)</option>
-                    </select>
+            <section id="survey">
+                <div class="row">
+                    <div class="col-12">
+                        <h4>Question 1</h4>
+                        <h6>Your mind is always buzzing with unexplored ideas and plans.</h6>
+                        <select id="range-1" class="form-control">
+                            <option selected disabled>Select an Option</option>
+                            <option value="1">1 (strongly disagree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (strong agree)</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-12">
-                    <h4>Question 2</h4>
-                    <h6>Generally speaking, you rely more on your experience than your imagination.</h6>
-                    <select id="range-2" class="form-control">
-                        <option selected disabled>Select an Option</option>
-                        <option>1 (strongly disagree)</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5 (strong agree)</option>
-                    </select>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <h4>Question 2</h4>
+                        <h6>Generally speaking, you rely more on your experience than your imagination.</h6>
+                        <select id="range-2" class="form-control">
+                            <option selected disabled>Select an Option</option>
+                            <option value="1">1 (strongly disagree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (strong agree)</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-12">
-                    <h4>Question 3</h4>
-                    <h6>You find it easty to stay relaxed and focused even when there is some pressure.</h6>
-                    <select id="range-3" class="form-control">
-                        <option selected disabled>Select an Option</option>
-                        <option>1 (strongly disagree)</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5 (strong agree)</option>
-                    </select>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <h4>Question 3</h4>
+                        <h6>You find it easty to stay relaxed and focused even when there is some pressure.</h6>
+                        <select id="range-3" class="form-control">
+                            <option selected disabled>Select an Option</option>
+                            <option value="1">1 (strongly disagree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (strong agree)</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-12">
-                    <h4>Question 4</h4>
-                    <h6>You rarely do something just out of sheer curiosity.</h6>
-                    <select id="range-4" class="form-control">
-                        <option selected disabled>Select an Option</option>
-                        <option>1 (strongly disagree)</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5 (strong agree)</option>
-                    </select>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <h4>Question 4</h4>
+                        <h6>You rarely do something just out of sheer curiosity.</h6>
+                        <select id="range-4" class="form-control">
+                            <option selected disabled>Select an Option</option>
+                            <option value="1">1 (strongly disagree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (strong agree)</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-12">
-                    <h4>Question 5</h4>
-                    <h6>People can rarely upset you.</h6>
-                    <select id="range-5" class="form-control">
-                        <option selected disabled>Select an Option</option>
-                        <option>1 (strongly disagree)</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5 (strong agree)</option>
-                    </select>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <h4>Question 5</h4>
+                        <h6>People can rarely upset you.</h6>
+                        <select id="range-5" class="form-control">
+                            <option selected disabled>Select an Option</option>
+                            <option value="1">1 (strongly disagree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (strong agree)</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-12">
-                    <h4>Question 6</h4>
-                    <h6>It is often difficult for you to relate to other people's feelings.</h6>
-                    <select id="range-6" class="form-control">
-                        <option selected disabled>Select an Option</option>
-                        <option>1 (strongly disagree)</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5 (strong agree)</option>
-                    </select>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <h4>Question 6</h4>
+                        <h6>It is often difficult for you to relate to other people's feelings.</h6>
+                        <select id="range-6" class="form-control">
+                            <option selected disabled>Select an Option</option>
+                            <option value="1">1 (strongly disagree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (strong agree)</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-12">
-                    <h4>Question 7</h4>
-                    <h6>In a discussion, truth should be more important than people's sensitivites.</h6>
-                    <select id="range-7" class="form-control">
-                        <option selected disabled>Select an Option</option>
-                        <option>1 (strongly disagree)</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5 (strong agree)</option>
-                    </select>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <h4>Question 7</h4>
+                        <h6>In a discussion, truth should be more important than people's sensitivites.</h6>
+                        <select id="range-7" class="form-control">
+                            <option selected disabled>Select an Option</option>
+                            <option value="1">1 (strongly disagree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (strong agree)</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-12">
-                    <h4>Question 8</h4>
-                    <h6>You rarely get carried away by fantasies and ideas.</h6>
-                    <select id="range-8" class="form-control">
-                        <option selected disabled>Select an Option</option>
-                        <option>1 (strongly disagree)</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5 (strong agree)</option>
-                    </select>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <h4>Question 8</h4>
+                        <h6>You rarely get carried away by fantasies and ideas.</h6>
+                        <select id="range-8" class="form-control">
+                            <option selected disabled>Select an Option</option>
+                            <option value="1">1 (strongly disagree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (strong agree)</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-12">
-                    <h4>Question 9</h4>
-                    <h6>You think that everyone's views should be respected regardless
-                        of whether they are supported by facts or not.</h6>
-                    <select id="range-9" class="form-control">
-                        <option selected disabled>Select an Option</option>
-                        <option>1 (strongly disagree)</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5 (strong agree)</option>
-                    </select>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <h4>Question 9</h4>
+                        <h6>You think that everyone's views should be respected regardless
+                            of whether they are supported by facts or not.</h6>
+                        <select id="range-9" class="form-control">
+                            <option selected disabled>Select an Option</option>
+                            <option value="1">1 (strongly disagree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (strong agree)</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-12">
-                    <h4>Question 10</h4>
-                    <h6>You feel more energetic after spending time with a group of people.</h6>
-                    <select id="range-10" class="form-control">
-                        <option selected disabled>Select an Option</option>
-                        <option>1 (strongly disagree)</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5 (strong agree)</option>
-                    </select>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <h4>Question 10</h4>
+                        <h6>You feel more energetic after spending time with a group of people.</h6>
+                        <select id="range-10" class="form-control">
+                            <option selected disabled>Select an Option</option>
+                            <option value="1">1 (strongly disagree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (strong agree)</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-        </section>
+                <button id="submit" type="submit" class="btn btn-primary mt-3">Submit</button>
+            </section>
+        </form>
 
         <footer class="footer mt-3">
             <p>
-                <a href="/api/friends">API Friends List</a> | 
+                <a href="/api/friends">API Friends List</a> |
                 <a href="https://github.com/maurafortino/friendfinder">Github Repo</a>
             </p>
         </footer>
     </div>
 
+    <div id="modal">
+        <div id="modal-content">
+            <span id="close">&times;</span>
+            <h2>"Your Match Is...</h2>
+            <h3 id="match-name"></h3>
+            <img id="match-image"></a>
+
+        </div>
+    </div>
 </body>
 
 </html>
+
+<script type="text/javascript">
+    var modal = $("#modal");
+    var matchName = $("#match-name");
+    var matchImage = $("#match-image");
+    var close = $("#close");
+
+    $("#submit").on("click", function (event) {
+        event.preventDefault();
+        // var e = document.getElementById("range-1");
+        // var result = e.options[e.selectedIndex].value;
+        var newFriend = {
+            friendName: $("#name").val().trim(),
+            friendPhoto: $("#image-link").val().trim(),
+            friendScores: [
+                parseInt($("#range-1").val()),
+                parseInt($("#range-2").val()),
+                parseInt($("#range-3").val()),
+                parseInt($("#range-4").val()),
+                parseInt($("#range-5").val()),
+                parseInt($("#range-6").val()),
+                parseInt($("#range-7").val()),
+                parseInt($("#range-8").val()),
+                parseInt($("#range-9").val()),
+                parseInt($("#range-10").val()),
+
+            ]
+        };
+
+        $.post("/api/friends", newFriend,
+            function (data) {
+                if (data) {
+                    alert("Searching for friend...");
+                }
+
+                // If a table is available... tell user they on the waiting list.
+                else {
+                    alert("Sorry. We can't seem to find you a friend. Try again later.");
+                };
+
+                $("#name").val("");
+                $("#image-link").val("");
+                $("#range-1").val("");
+                $("#range-2").val("");
+                $("#range-3").val("");
+                $("#range-4").val("");
+                $("#range-5").val("");
+                $("#range-6").val("");
+                $("#range-7").val("");
+                $("#range-8").val("");
+                $("#range-9").val("");
+                $("#range-10").val("");
+            });
+        runScores();
+    });
+
+    function runScores() {
+        $.ajax({ url: "api/friends", method: "GET" })
+            .then(function (friendData) {
+                console.log(friendData);
+                var match = friendData[0];
+                var hasMatchIndex = false;
+                var matchIndex;
+                var totalDiffArr = [];
+
+                for (var i = 0; i < friendData.length - 1; i++) {
+                    var totalDiff = 0;
+                    var arr = friendData[friendData.length - 1].friendScores;
+                    for (var j = 0; j < arr.length; j++) {
+                        totalDiff += Math.abs(arr[j] - friendData[i].friendScores[j]);
+                    };
+                    totalDiffArr.push(totalDiff);
+                    console.log("difference of " + friendData[i].friendName + "=" + totalDiff);
+                };
+                console.log("TD Arr= " + totalDiffArr);
+
+                for (var x = 0; x < totalDiffArr.length; x++) {
+                    if (!hasMatchIndex) {
+                        matchIndex = totalDiffArr[0];
+                        hasMatchIndex = true;
+                    } else {
+                        if (totalDiffArr[x] <= matchIndex) {
+                            match = friendData[x]
+                            matchIndex = totalDiffArr[x];
+                            hasMatchIndex = true;
+                        }
+                    };
+                };
+        
+                modal.css("display", "block");
+                matchName.text(match.friendName);
+                matchImage.attr("src", match.friendPhoto);
+                close.onclick = function () {
+                    modal.css("display", "none");
+                };
+
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function (event) {
+                    if (event.target == modal) {
+                        modal.css("display", "none");
+                    }
+                };
+            });
+    };
+</script>
