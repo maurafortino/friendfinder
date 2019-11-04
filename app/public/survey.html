@@ -54,7 +54,7 @@
             cursor: pointer;
         }
 
-        img{
+        img {
             width: 100%;
         }
     </style>
@@ -75,16 +75,16 @@
     </nav>
 
     <div class="container">
-        <form>
+        <form name="form">
             <section class="about">
                 <h4>About You</h4>
                 <div class="form-group">
                     <label for="name">Name (Required)</label>
-                    <input type="text" class="form-control" id="name">
+                    <input type="text" class="form-control" id="name" name="userName">
                 </div>
                 <div class="form-group">
                     <label for="image-link">Link to Photo Image (Required)</label>
-                    <input type="text" class="form-control" id="image-link">
+                    <input type="text" class="form-control" id="image-link" name="userPhoto">
                 </div>
             </section>
 
@@ -245,8 +245,8 @@
 
         <footer class="footer mt-3">
             <p>
-                <a href="/api/friends">API Friends List</a> |
-                <a href="https://github.com/maurafortino/friendfinder">Github Repo</a>
+                <a href="/api/friends" target="_blank">API Friends List</a> |
+                <a href="https://github.com/maurafortino/friendfinder" target="_blank">Github Repo</a>
             </p>
         </footer>
     </div>
@@ -273,8 +273,21 @@
 
     $("#submit").on("click", function (event) {
         event.preventDefault();
-        // var e = document.getElementById("range-1");
-        // var result = e.options[e.selectedIndex].value;
+        validateForm();
+
+    });
+
+    function validateForm() {
+  var x = document.forms["form"]["userName"].value;
+  var y = document.forms["form"]["userPhoto"].value;
+  if (x == "" || y == "") {
+    alert("Pleae fill in your name/photo");
+    return false;
+  }
+  addNewFriend();
+}
+
+    function addNewFriend() {
         var newFriend = {
             friendName: $("#name").val().trim(),
             friendPhoto: $("#image-link").val().trim(),
@@ -318,7 +331,7 @@
                 $("#range-10").val("");
             });
         runScores();
-    });
+    };
 
     function runScores() {
         $.ajax({ url: "api/friends", method: "GET" })
