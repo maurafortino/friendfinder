@@ -2,11 +2,6 @@ html {
 	height: 100%;
 }
 
-body {
-	background: url('../images/wine.jpg');
-	background-size: cover;
-	background-position: center;
-}
 .navbar{
     background-color: rgba(54, 79, 93, 1);
 }
